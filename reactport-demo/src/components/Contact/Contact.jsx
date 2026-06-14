@@ -12,26 +12,27 @@ function Contact() {
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga eius eligendi in laboriosam delectus ipsum inventore alias dolorem ducimus aliquid.
                 </p>
                 <p className={styles.contact_address}>
-                    123 Main Street <br />
-                    Bangkok, Thailand
+                    26/20 Danha Street in Midtown <br />
+                    Chaing Rai, Thailand
                 </p>
-                <p><FaPhone /> (+66) 98 555 1234</p>
-                <p><FaEnvelope /> support@site.com</p>
+                <p><FaPhone /> (+66) 84 4877 396</p>
+                <p><FaEnvelope /> vorawut.maggy@gmail.com</p>
+                <p><FaEnvelope /> vorawut_max@hotmail.com</p>
             </div>
             <div className={styles.contact_form}>
                 <form action="">
                     <div className={styles.input_group}>
                         <div>
                             <label htmlFor="first name">First Name</label>
-                            <input type="text" placeholder='eg. John' />
+                            <input type="text" placeholder='eg. Max' />
                         </div>
                         <div>
                             <label htmlFor="last name">Last Name</label>
-                            <input type="text" placeholder='eg. Doe' />
+                            <input type="text" placeholder='eg. Autumn' />
                         </div>
                     </div>
                     <label htmlFor="email address">Email address</label>
-                    <input type="email" placeholder='eg. johndoe@gmail.com' />
+                    <input type="email" placeholder='eg. inwza@gmail.com' />
                     <label htmlFor="email address">Your message</label>
                     <textarea name="" id="" cols="30" rows="10" placeholder='Type here'></textarea>
                     <button type='submit'>Submit</button>
