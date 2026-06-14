@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Services.module.css'
-import { FaCode, FaPaintbrush, FaDesktop  } from "react-icons/fa6";
+import { FaCode, FaShieldHalved, FaDesktop  } from "react-icons/fa6";
 
 function Services() {
   return (
@@ -15,7 +15,7 @@ function Services() {
                 </p>
             </div>
             <div className={styles.services_items}>
-                <FaPaintbrush />
+                <FaShieldHalved />
                 <h4>QA Engineer</h4>
                 <p>
                 About My Software testing skill and experience have skill testing as "Selenium Webdriver", "ROBOT Framework", "POSTMAN and NewMAN", "Locust", "JMeter", "Katalon" and also learning about "Playwright".

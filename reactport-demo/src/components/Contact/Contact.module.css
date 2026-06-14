@@ -1,6 +1,6 @@
 .contact_wrapper {
     height: 500px;
-    background-color: #0085FF;
+    background-color: var(--color-bg-dark);
     color: #fff;
     overflow: hidden;
 
@@ -72,7 +72,9 @@
             & button {
                 width: 100px;
                 height: 40px;
-                background-color: #fff;
+                background-color: var(--color-orange);
+                color: #fff;
+                font-weight: bold;
                 border: none;
                 border-radius: 5px;
                 margin-top: 20px;
@@ -80,23 +82,26 @@
                 transition: 0.3s;
 
                 &:hover {
-                    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+                    background-color: var(--color-orange-light);
+                    box-shadow: 0 0 20px 0px rgba(255, 106, 0, 0.4);
                 }
             }
         }
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
     .contact_wrapper {
         height: auto;
+        padding-bottom: 50px;
 
         & .contact_con {
             flex-direction: column;
+            gap: 40px;
 
             & .contact_info, & .contact_form {
                 width: 100%;
-                padding: 20px;
+                padding: 0 20px;
             }
 
             & .contact_form {

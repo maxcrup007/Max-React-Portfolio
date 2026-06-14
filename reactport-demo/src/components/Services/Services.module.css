@@ -1,5 +1,5 @@
 .services_con {
-    height: 600px;
+    min-height: 600px;
     background-color: #fff;
     text-align: center;
     overflow: hidden;
@@ -13,23 +13,39 @@
     & .services_list {
         margin-top: 110px;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 40px;
+        padding-bottom: 60px;
 
         & .services_items {
             width: 250px;
-            margin: 0 50px;
+            margin: 0 10px;
 
             & svg {
                 width: 80px;
                 height: 80px;
-                color: #0085FF;
+                color: var(--color-orange);
             }
 
             & h4 {
-                color: #0085FF;
+                color: var(--color-bg-dark);
                 font-size: 24px;
                 font-weight: bold;
                 margin: 25px 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .services_con {
+        & .services_list {
+            margin-top: 60px;
+            gap: 30px;
+
+            & .services_items {
+                width: 45%;
             }
         }
     }
@@ -42,6 +58,7 @@
         & .services_list {
             flex-direction: column;
             margin: 50px 0;
+            gap: 0;
 
             & .services_items {
                 width: 100%;

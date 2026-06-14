@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './Testimonials.module.css'
+import styles from './Stakeholder.module.css'
 
-function Testimonials() {
+function Stakeholder() {
   return (
     <div className={styles.testi_con}>
       <h3 className={styles.testi_title}>My Stakeholder</h3>
@@ -29,4 +29,4 @@ function Testimonials() {
   )
 }
 
-export default Testimonials
+export default Stakeholder

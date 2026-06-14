@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Skills.module.css'
-import { FaSquareJs, FaReact, FaSass, FaGitAlt, FaNode } from "react-icons/fa6";
+import { FaSquareJs, FaReact, FaSass, FaGitAlt, FaNode, FaLocust } from "react-icons/fa6";
+import { SiSelenium, SiRobotframework, SiGo, SiDjango } from "react-icons/si";
 import Tilt from 'react-parallax-tilt';
 
 function Skills() {
@@ -31,6 +32,31 @@ function Skills() {
             <li>
               <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
                 <FaNode />
+              </Tilt>
+            </li>
+            <li>
+              <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
+                <SiSelenium />
+              </Tilt>
+            </li>
+            <li>
+              <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
+                <SiRobotframework />
+              </Tilt>
+            </li>
+            <li>
+              <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
+                <SiGo />
+              </Tilt>
+            </li>
+            <li>
+              <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
+                <SiDjango />
+              </Tilt>
+            </li>
+            <li>
+              <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
+                <FaLocust />
               </Tilt>
             </li>
         </ul>

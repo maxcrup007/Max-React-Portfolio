@@ -13,7 +13,7 @@ import Skills from './components/Skills/Skills'
 import Services from './components/Services/Services'
 import Portfolio from './components/Portfolio/Portfolio'
 import Number from './components/Number/Number'
-import Testimonials from './components/Testimonials/Testimonials'
+import Stakeholder from './components/Stakeholder/Stakeholder'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
@@ -52,7 +52,7 @@ function App() {
       <Services />
       <Portfolio />
       <Number />
-      <Testimonials />
+      <Stakeholder />
       <Contact />
       <Footer />
     </>

@@ -14,6 +14,7 @@
 
     & .testi_list {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         margin-top: 80px;
 
@@ -42,12 +43,27 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
     .testi_con {
         height: auto;
+        padding-bottom: 40px;
 
         & .testi_list {
+            margin-top: 40px;
+
+            & .testi_items {
+                width: 320px;
+                margin: 20px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .testi_con {
+        & .testi_list {
             flex-direction: column;
+            align-items: center;
 
             & .testi_items {
                 width: 100%;

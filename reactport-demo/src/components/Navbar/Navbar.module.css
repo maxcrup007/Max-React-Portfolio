@@ -1,5 +1,5 @@
 nav {
-    background-color: #0085FF;
+    background-color: var(--color-bg-dark);
     overflow: hidden;
     position: relative;
 
@@ -11,24 +11,40 @@ nav {
         position: absolute;
         top: 45px;
         right: 20px;
-        color: #fff;
+        color: var(--color-orange);
     }
 
     .container {
         max-width: 1170px;
         margin: 0 auto;
     }
-    
+
     .nav_con {
         height: 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 0 20px;
 
         & .logo {
             & a {
+                display: flex;
+                align-items: center;
+                gap: 8px;
                 text-decoration: none;
                 font-weight: bold;
+                font-size: 18px;
+                color: #fff;
+                transition: 0.3s;
+
+                &:hover {
+                    color: var(--color-orange);
+                }
+            }
+
+            & .logo_icon {
+                color: var(--color-orange);
+                font-size: 20px;
             }
         }
 
@@ -41,40 +57,52 @@ nav {
 
                 & a {
                     text-decoration: none;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: var(--color-orange);
+                    }
                 }
             }
         }
 
         & .button {
-            width: 100px;
+            min-width: 130px;
             height: 35px;
-            background-color: #fff;
+            background-color: var(--color-orange);
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 20px;
             transition: 0.3s;
             cursor: pointer;
+            padding: 0 15px;
 
             &:hover {
-                box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+                background-color: var(--color-orange-light);
+                box-shadow: 0 0 20px 0px rgba(255, 106, 0, 0.4);
             }
 
             & a {
+                display: flex;
+                align-items: center;
+                gap: 8px;
                 text-decoration: none;
-                color: #333;
+                color: #fff;
+                font-weight: bold;
+                font-size: 14px;
+                white-space: nowrap;
             }
         }
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
     .nav_con {
         flex-direction: column;
         height: auto !important;
-        margin: 50px 0;
+        padding: 20px 30px;
         align-items: start !important;
-        margin-left: 30px;
 
         & ul {
             display: none !important;
@@ -89,7 +117,7 @@ nav {
         list-style: none;
 
         & li {
-            margin: 35px;
+            margin: 20px 0 20px 35px;
 
             & a {
                 text-decoration: none;
@@ -99,9 +127,9 @@ nav {
 
     /* Mobile Menu */
     & .mobile_button {
-        width: 100px;
+        min-width: 130px;
         height: 35px;
-        background-color: #fff;
+        background-color: var(--color-orange);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -110,19 +138,26 @@ nav {
         cursor: pointer;
         margin-left: 35px;
         margin-bottom: 20px;
+        padding: 0 15px;
 
         &:hover {
-            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+            background-color: var(--color-orange-light);
+            box-shadow: 0 0 20px 0px rgba(255, 106, 0, 0.4);
         }
 
         & a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
-            color: #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 14px;
         }
     }
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 769px) {
     .mobile_menu, .bars, .mobile_button {
         display: none;
     }

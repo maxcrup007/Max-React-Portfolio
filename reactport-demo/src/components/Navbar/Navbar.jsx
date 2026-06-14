@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from './Navbar.module.css'
-import { FaBars } from "react-icons/fa6";
+import { FaBars, FaBriefcase, FaDownload } from "react-icons/fa6";
 
 function Navbar() {
 
@@ -15,7 +15,7 @@ function Navbar() {
         <div className={styles.container}>
           <div className={styles.nav_con}>
             <div className={styles.logo}>
-              <a href="#">My Portfolio</a>
+              <a href="#"><FaBriefcase className={styles.logo_icon} /> Vorawut's Portfolio</a>
             </div>
             <ul>
               <li><a href="#services">Skills</a></li>
@@ -23,7 +23,7 @@ function Navbar() {
               <li><a href="#contact">Contact</a></li>
             </ul>
             <div className={styles.button}>
-              <a href="#">Download CV</a>
+              <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>
             </div>
           </div>
 
@@ -37,7 +37,7 @@ function Navbar() {
                 <li><a href="#contact">Contact</a></li>
               </ul>
               <div className={styles.mobile_button}>
-                <a href="#">Download CV</a>
+                <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>
               </div>
             </>
           ) : null}
