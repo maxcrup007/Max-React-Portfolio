@@ -85,6 +85,23 @@
                     background-color: var(--color-orange-light);
                     box-shadow: 0 0 20px 0px rgba(255, 106, 0, 0.4);
                 }
+
+                &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+            }
+
+            & .status_success {
+                margin-top: 15px;
+                color: #4caf50;
+                font-weight: bold;
+            }
+
+            & .status_error {
+                margin-top: 15px;
+                color: #ff4d4d;
+                font-weight: bold;
             }
         }
     }
