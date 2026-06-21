@@ -1,52 +1,74 @@
 import React from 'react'
 import styles from './Hero.module.css'
-import { FaGithub, FaDiscord, FaFacebookF, FaDownload } from "react-icons/fa6";
+import { FaGithub, FaDiscord, FaFacebookF, FaDownload, FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { TypeAnimation } from 'react-type-animation';
 import Tilt from 'react-parallax-tilt';
 
 function Hero() {
   return (
-    <div className={styles.hero_wrapper}>
-      <div className={styles.container}>
-        <div className={styles.hero_con}>
-            <div className={styles.hero_info}>
-                <p className={styles.text_1}>Hi, its' me <span className={styles.highlight}>Max</span></p>
-                <h3 className={styles.text_2}>Vorawut Phirunpathanagul</h3>
-                <p className={styles.text_3}>
-                  <span style={{ marginRight: '10px'}}>I'm a</span>
-                  <TypeAnimation
-                    sequence={[
-                      'Front-end Developer',
-                      'QA Engineer',
-                      'Full-stack Developer',
-                    ]}
-                    speed={25}
-                    repeat={Infinity}
-                  />
-                </p>
-                <p className={styles.text_4}>Hi there, I am a software enthusiast dedicated to continuous growth and
-professional excellence. Having a background in software testing and
-development, I am now looking to dive deep into real-world software
-engineering. I am particularly skilled in API design and full-stack
-development and am eager to contribute to a forward-thinking team.
-My journey is fueled by a desire to learn best practices in the industry,
-which will eventually empower me to innovate and build my own
-software products.</p>
-                <ul className={styles.hero_social}>
-                    <li><a href="https://github.com/maxcrup007" target="_blank" rel="noreferrer"><FaGithub /></a></li>
-                    <li><a href="https://discord.com/users/ma11_maxi" target="_blank" rel="noreferrer"><FaDiscord /></a></li>
-                    <li><a href="https://www.facebook.com/vorawut.max" target="_blank" rel="noreferrer"><FaFacebookF /></a></li>
-                </ul>
-                <a className={styles.cv_button} href="/Max_Resume.pdf" download>
-                    Download CV <FaDownload />
-                </a>
-            </div>
-            <Tilt scale={1.2} transitionSpeed={2500} tiltReverse={true}>
-              <div className={styles.hero_img}></div>
-            </Tilt>
+    <section className={styles.hero_section}>
+      <div className={styles.bento_grid}>
+
+        {/* Card 1: Name + Role */}
+        <div className={`${styles.card} ${styles.card_title}`}>
+          <p className={styles.greeting}>Hi, it's me <span className={styles.highlight}>Max</span></p>
+          <h1 className={styles.name}>
+            <span className={styles.name_first}>Vorawut</span>
+            <span className={styles.name_divider}></span>
+            <span className={styles.name_last}>Phirunpathanagul</span>
+          </h1>
+          <p className={styles.role}>
+            <span>I'm a </span>
+            <TypeAnimation
+              sequence={['Front-end Developer', 1200, 'QA Engineer', 1200, 'Full-stack Developer', 1200]}
+              speed={30}
+              repeat={Infinity}
+            />
+          </p>
         </div>
+
+        {/* Card 2: Profile photo — spans 2 rows */}
+        <Tilt scale={1.04} transitionSpeed={2500} tiltReverse={true} className={`${styles.card} ${styles.card_photo}`}>
+          <div className={styles.photo_img}></div>
+        </Tilt>
+
+        {/* Card 3: Social links */}
+        <div className={`${styles.card} ${styles.card_social}`}>
+          <p className={styles.card_label}>Find me on</p>
+          <ul className={styles.social_list}>
+            <li>
+              <a href="https://github.com/maxcrup007" target="_blank" rel="noreferrer">
+                <FaGithub /> <span>GitHub</span> <FaArrowUpRightFromSquare className={styles.arrow} />
+              </a>
+            </li>
+            <li>
+              <a href="https://discord.com/users/ma11_maxi" target="_blank" rel="noreferrer">
+                <FaDiscord /> <span>Discord</span> <FaArrowUpRightFromSquare className={styles.arrow} />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/vorawut.max" target="_blank" rel="noreferrer">
+                <FaFacebookF /> <span>Facebook</span> <FaArrowUpRightFromSquare className={styles.arrow} />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Card 4: Bio */}
+        <div className={`${styles.card} ${styles.card_bio}`}>
+          <p>Hi there, I am a software enthusiast dedicated to continuous growth and professional excellence. Having a background in software testing and development, I am eager to contribute to a forward-thinking team. Particularly skilled in API design and full-stack development.</p>
+        </div>
+
+        {/* Card 5: Download CV CTA */}
+        <div className={`${styles.card} ${styles.card_cta}`}>
+          <p className={styles.cta_question}>Want my resume?</p>
+          <a className={styles.cta_link} href="/Max_Resume.pdf" download>
+            Download CV <FaDownload />
+          </a>
+        </div>
+
       </div>
-    </div>
+    </section>
   )
 }
 

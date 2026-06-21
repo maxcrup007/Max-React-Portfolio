@@ -1,75 +1,70 @@
 .testi_con {
-    height: 500px;
-    background-color: #fff; 
-    text-align: center;
-    max-width: 1170px;
+    background-color: var(--color-bg-page);
+    padding: 8px 24px;
+    max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
+}
 
-    & .testi_title {
-        margin-top: 55px;
-        font-size: 32px;
-        font-weight: bold;
+.testi_title {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    padding-left: 4px;
+}
+
+.testi_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.testi_items {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--card-radius);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: 0.25s;
+
+    &:hover { border-color: var(--color-orange); }
+
+    & p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--color-text-muted);
+        flex: 1;
     }
 
-    & .testi_list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 80px;
+    & img {
+        width: 52px;
+        height: 52px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid var(--color-orange);
+    }
 
-        & .testi_items {
-            width: 320px;
-            margin: 0 30px;
+    & h4 {
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--color-text-light);
+    }
 
-            & img {
-                width: 60px;
-                height: 60px;
-                object-fit: cover;
-                border-radius: 100%;
-                margin: 20px 0;
-            }
-
-            & h4 {
-                font-size: 14px;
-                font-weight: bold;
-            }
-
-            & .bio {
-                font-size: 12px;
-                color: #757575;
-            }
-        }
+    & .bio {
+        font-size: 12px;
+        color: var(--color-orange);
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .testi_con {
-        height: auto;
-        padding-bottom: 40px;
-
-        & .testi_list {
-            margin-top: 40px;
-
-            & .testi_items {
-                width: 320px;
-                margin: 20px;
-            }
-        }
-    }
+    .testi_list { grid-template-columns: 1fr 1fr; }
 }
 
-@media screen and (max-width: 480px) {
-    .testi_con {
-        & .testi_list {
-            flex-direction: column;
-            align-items: center;
-
-            & .testi_items {
-                width: 100%;
-                margin: 0;
-                padding: 30px;
-            }
-        }
-    }
+@media screen and (max-width: 600px) {
+    .testi_con { padding: 8px 12px; }
+    .testi_list { grid-template-columns: 1fr; }
 }

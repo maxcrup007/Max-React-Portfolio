@@ -1,9 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
-// External Libs
 import AnimatedCursor from "react-animated-cursor"
 
 // Components
@@ -18,18 +13,16 @@ import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       <AnimatedCursor
         innerSize={8}
         outerSize={8}
-        color='0, 65, 125'
-        outerAlpha={0.2}
+        color='255, 106, 0'
+        outerAlpha={0.15}
         innerScale={1.5}
         outerStyle={{
-          border: '3px solid #fff',
+          border: '2px solid var(--color-orange)',
         }}
         outerScale={5}
         clickables={[

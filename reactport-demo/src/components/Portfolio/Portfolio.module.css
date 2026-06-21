@@ -1,67 +1,59 @@
 .port_con {
-    max-width: 1170px;
-    height: 900px;
+    background-color: var(--color-bg-page);
+    padding: 8px 24px;
+    max-width: 1200px;
     margin: 0 auto;
-    overflow: hidden;
+}
 
-    & .port_title {
-        margin-top: 45px;
-        text-align: center;
-        font-size: 32px;
-        font-weight: bold;
+.port_title {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    padding-left: 4px;
+}
+
+.port_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap);
+}
+
+.port_items {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    transition: 0.25s;
+
+    &:hover {
+        border-color: var(--color-orange);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(255, 106, 0, 0.12);
     }
 
-    & .port_list {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        justify-items: center;
+    & img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
 
-        & .port_items {
-            margin-top: 40px;
-
-            & img {
-                width: 300px;
-                height: 300px;
-                border-radius: 20px;
-                object-fit: cover;
-            }
-
-            & p {
-                font-size: 16px;
-                font-weight: bold;
-                margin: 10px 0;
-            }
-        }
+    & p {
+        font-size: 14px;
+        font-weight: bold;
+        color: var(--color-text-light);
+        padding: 16px 20px;
     }
 }
 
 @media screen and (max-width: 1024px) {
-    .port_con {
-        height: auto;
-        margin: 30px 0;
-
-        & .port_list {
-            grid-template-columns: 1fr 1fr;
-            justify-items: center;
-            padding: 20px;
-            gap: 20px;
-
-            & .port_items {
-                width: 100%;
-
-                & img {
-                    width: 100%;
-                    height: auto;
-                }
-            }
-        }
-    }
+    .port_list { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media screen and (max-width: 480px) {
-    .port_con {
-        & .port_list {
-            grid-template-columns: 1fr;
-        }
-    }
+@media screen and (max-width: 600px) {
+    .port_con { padding: 8px 12px; }
+    .port_list { grid-template-columns: 1fr; }
 }

@@ -7,6 +7,7 @@ import Tilt from 'react-parallax-tilt';
 function Skills() {
   return (
     <div className={styles.skills_con}>
+      <div className={styles.skills_inner}>
         <h3 className={styles.skills_title}>My Skill set</h3>
         <ul className={styles.skills_list}>
             <li>
@@ -60,6 +61,7 @@ function Skills() {
               </Tilt>
             </li>
         </ul>
+      </div>
     </div>
   )
 }
