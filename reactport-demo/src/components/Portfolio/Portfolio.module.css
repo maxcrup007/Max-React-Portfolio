@@ -21,12 +21,17 @@
     gap: var(--card-gap);
 }
 
+.port_link {
+    text-decoration: none;
+}
+
 .port_items {
     background-color: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--card-radius);
     overflow: hidden;
     transition: 0.25s;
+    cursor: pointer;
 
     &:hover {
         border-color: var(--color-orange);

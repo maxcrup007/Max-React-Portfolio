@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
 import { FaBars, FaBriefcase, FaDownload } from "react-icons/fa6";
 
@@ -18,9 +19,9 @@ function Navbar() {
               <a href="#"><FaBriefcase className={styles.logo_icon} /> Vorawut's Portfolio</a>
             </div>
             <ul>
-              <li><a href="#services">Skills</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><Link to="/skills">Skills</Link></li>
+              <li><Link to="/certificates">My Certificate</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
             </ul>
             <div className={styles.button}>
               <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>
@@ -32,9 +33,9 @@ function Navbar() {
           {isToggled ? (
             <>
               <ul className={styles.mobile_menu}>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><Link to="/skills">Skills</Link></li>
+                <li><Link to="/certificates">My Certificate</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
               </ul>
               <div className={styles.mobile_button}>
                 <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>

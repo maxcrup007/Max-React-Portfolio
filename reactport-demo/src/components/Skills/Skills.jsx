@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Skills.module.css'
-import { FaSquareJs, FaReact, FaSass, FaGitAlt, FaNode, FaLocust } from "react-icons/fa6";
+import { FaSquareJs, FaReact, FaSass, FaGitAlt, FaNode, FaLocust, FaArrowRight } from "react-icons/fa6";
 import { SiSelenium, SiRobotframework, SiGo, SiDjango } from "react-icons/si";
 import Tilt from 'react-parallax-tilt';
 
@@ -61,6 +62,15 @@ function Skills() {
               </Tilt>
             </li>
         </ul>
+
+        <div className={styles.skills_cta}>
+          <Link to="/skills" className={styles.cta_secondary}>
+            View My Services <FaArrowRight />
+          </Link>
+          <Link to="/certificates" className={styles.cta_primary}>
+            More Information <FaArrowRight />
+          </Link>
+        </div>
       </div>
     </div>
   )

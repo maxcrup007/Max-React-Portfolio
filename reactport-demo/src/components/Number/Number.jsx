@@ -21,11 +21,11 @@ function Number() {
           <h3>
             <VisibilitySensor partialVisibility offset={{ bottom: 200 }}>
               {({ isVisible }) => (
-                <div>{isVisible ? <CountUp start={0} end={30} duration={1} /> : null}+</div>
+                <div>{isVisible ? <CountUp start={0} end={100} duration={1} /> : null}+</div>
               )}
             </VisibilitySensor>
           </h3>
-          <p>Companies Helped</p>
+          <p>Problem Resolved</p>
         </div>
         <div className={styles.number_items}>
           <h3>
