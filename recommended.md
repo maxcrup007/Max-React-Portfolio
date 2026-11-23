@@ -1,40 +1,180 @@
-# Deployment Guide: Vercel (Frontend) + Railway (Backend)
+# Deployment Guide — Portfolio Web Application
 
-## Overview
+## Two Deployment Cases
 
-| Part | Service | Cost | URL Example |
-|------|---------|------|-------------|
-| React UI | Vercel | Free | `https://your-portfolio.vercel.app` |
-| Go API | Railway | Free tier | `https://your-api.railway.app` |
-
-Both services connect to your GitHub repository and **auto-deploy every time you push code**.
+| Case | Option | Contact Form | Cost | Difficulty |
+|------|--------|-------------|------|-----------|
+| **Case 1** | GitHub Pages (Frontend only) | ❌ No | Free | ⭐ Easy |
+| **Case 2** | Vercel + Railway (Full stack) | ✅ Yes | Free tier | ⭐⭐ Medium |
 
 ---
+
+---
+
+# CASE 1 — GitHub Pages (Frontend Only)
+
+> Contact form UI shows but emails will NOT be sent.
+> Everything else (Skills, Portfolio, Certificates pages) works perfectly.
 
 ## Prerequisites
 
 - GitHub account
-- Your project pushed to a GitHub repository
-- Gmail App Password (16 characters) — for the Go backend to send emails
-  - Get one at: `myaccount.google.com` → Security → 2-Step Verification → App Passwords
+- Project pushed to a GitHub repository (`git push`)
 
 ---
 
-## Part 1 — Deploy the Go Backend on Railway
+## Step 1: Check `vite.config.js`
 
-### Step 1: Prepare the Go server
+Make sure the `base` is set to your repository name:
 
-Make sure `server/` has these files:
+```js
+// reactport-demo/vite.config.js
+export default defineConfig({
+  base: '/React-Portfolio/',   // ← must match your GitHub repo name exactly
+  plugins: [react()],
+})
+```
+
+---
+
+## Step 2: Check `package.json` has the deploy script
+
+Open `reactport-demo/package.json` and confirm these lines exist:
+
+```json
+"homepage": "https://maxcrup007.github.io/React-Portfolio",
+"scripts": {
+  "deploy": "npm run build && gh-pages -d dist"
+}
+```
+
+If `gh-pages` is not installed, run:
+```
+cd reactport-demo
+npm install gh-pages --save-dev
+```
+
+---
+
+## Step 3: Push your latest code to GitHub
+
+```
+git add .
+git commit -m "ready for deployment"
+git push origin max27
+```
+
+> Push to your working branch first. GitHub Pages will serve from `gh-pages` branch (created automatically by the deploy command).
+
+---
+
+## Step 4: Run the deploy command
+
+```
+cd reactport-demo
+npm run deploy
+```
+
+This will:
+1. Build the React app (`npm run build` → creates `dist/` folder)
+2. Push the `dist/` folder to the `gh-pages` branch on GitHub automatically
+
+Wait about **1–2 minutes** for GitHub to publish it.
+
+---
+
+## Step 5: Enable GitHub Pages on your repository
+
+1. Go to your GitHub repository → **Settings** tab
+2. Scroll down to **"Pages"** in the left sidebar
+3. Under **"Branch"** → select `gh-pages` → folder `/root`
+4. Click **Save**
+
+---
+
+## Step 6: Get your live URL
+
+Your portfolio will be live at:
+```
+https://maxcrup007.github.io/React-Portfolio/
+```
+
+---
+
+## Updating GitHub Pages later
+
+Every time you make changes, just run again:
+```
+cd reactport-demo
+npm run deploy
+```
+
+No other steps needed — it rebuilds and re-publishes automatically.
+
+---
+
+## Troubleshooting — GitHub Pages
+
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| Blank page | Wrong `base` in vite.config.js | Set `base: '/React-Portfolio/'` |
+| Page not found (404) | HashRouter not set | Already fixed — your app uses HashRouter |
+| Old version showing | GitHub cache | Wait 2–3 minutes and hard refresh (Ctrl+Shift+R) |
+| Images not loading | Wrong image path | Use absolute paths starting with `/React-Portfolio/images/...` or ibb.co links |
+| `gh-pages` not found | Package not installed | Run `npm install gh-pages --save-dev` |
+
+---
+
+## Case 1 Summary Checklist
+
+- [ ] `vite.config.js` has correct `base` set to `/React-Portfolio/`
+- [ ] `package.json` has `homepage` and `deploy` script
+- [ ] Code pushed to GitHub
+- [ ] `npm run deploy` ran successfully
+- [ ] GitHub Pages enabled on `gh-pages` branch in repo Settings
+- [ ] Live URL opens correctly in browser
+
+---
+
+---
+
+# CASE 2 — Vercel + Railway (Frontend + Backend)
+
+> Full deployment — contact form sends real emails.
+> Both services connect to GitHub and **auto-deploy on every `git push`**.
+
+## Overview
+
+| Part | Service | URL Example |
+|------|---------|-------------|
+| React UI | Vercel | `https://your-portfolio.vercel.app` |
+| Go API Server | Railway | `https://your-api.railway.app` |
+
+## Prerequisites
+
+- GitHub account with project pushed
+- Gmail App Password (16 characters)
+  - Go to: `myaccount.google.com` → Security → 2-Step Verification → App Passwords
+  - Select app: **"Mail"** → Select device: **"Other"** → name it "Portfolio"
+  - Copy the 16-character password shown (you only see it once)
+
+---
+
+## PART A — Deploy Go Backend on Railway
+
+### A1: Prepare the server folder
+
+Make sure these files exist in `server/`:
 
 ```
 server/
-  main.go
-  .env          ← never commit this (already in .gitignore)
-  .env.example  ← commit this as a reference
+  main.go          ← your Go server code
+  go.mod           ← Go module file
+  .env             ← NEVER commit this (already in .gitignore)
+  .env.example     ← commit this as reference for teammates
 ```
 
 Create `server/.env.example` if it does not exist:
-
 ```
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
@@ -44,30 +184,31 @@ MAIL_TO=your-email@gmail.com
 PORT=8080
 ```
 
-### Step 2: Create a Railway account
+### A2: Create a Railway account
 
 1. Go to **railway.app**
 2. Click **"Start a New Project"**
-3. Sign in with your GitHub account
+3. Click **"Sign in with GitHub"**
+4. Authorize Railway to access your repositories
 
-### Step 3: Deploy the Go server
+### A3: Create a new service from GitHub
 
-1. Click **"Deploy from GitHub repo"**
+1. Inside Railway dashboard → click **"+ New"** → **"GitHub Repo"**
 2. Select your portfolio repository
-3. Railway will detect Go automatically
+3. Railway detects Go automatically and starts building
 
-### Step 4: Set the Root Directory
+### A4: Set the Root Directory
 
-Railway needs to know the server is inside the `server/` folder:
+Railway must know Go lives in `server/`, not the root:
 
-1. Go to your service → **Settings** tab
-2. Under **"Source"** → set **Root Directory** to `server`
-3. Click **Save**
+1. Click your service → **Settings** tab
+2. Find **"Source"** section → **Root Directory** → type `server`
+3. Click **Save** → Railway will rebuild
 
-### Step 5: Add environment variables
+### A5: Add environment variables
 
-1. Go to your service → **Variables** tab
-2. Add each variable one by one:
+1. Click your service → **Variables** tab
+2. Click **"+ New Variable"** and add each one:
 
 | Variable | Value |
 |----------|-------|
@@ -78,46 +219,40 @@ Railway needs to know the server is inside the `server/` folder:
 | `MAIL_TO` | `vorawut.maggy@gmail.com` |
 | `PORT` | `8080` |
 
-3. Railway will automatically redeploy after saving variables
+Railway redeploys automatically after saving.
 
-### Step 6: Get your Railway public URL
+### A6: Generate a public domain
 
-1. Go to your service → **Settings** tab
-2. Under **"Networking"** → click **"Generate Domain"**
-3. Copy the URL — it looks like `https://your-app-name.railway.app`
-4. Test it: open `https://your-app-name.railway.app/api/contact` in a browser — you should see a response (even an error message means the server is running)
+1. Click your service → **Settings** tab
+2. Scroll to **"Networking"** → click **"Generate Domain"**
+3. Copy the URL: `https://your-app-name.railway.app`
+
+### A7: Test the backend is running
+
+Open in a browser:
+```
+https://your-app-name.railway.app/api/contact
+```
+If you see any response (even an error JSON), the server is alive.
 
 ---
 
-## Part 2 — Deploy the React Frontend on Vercel
+## PART B — Deploy React Frontend on Vercel
 
-### Step 1: Set the API URL environment variable locally
-
-In `reactport-demo/`, create a `.env.production` file (if it does not exist):
-
-```
-VITE_CONTACT_API_URL=https://your-app-name.railway.app/api/contact
-```
-
-Replace `your-app-name` with your actual Railway URL from Part 1 Step 6.
-
-> Do NOT commit `.env.production` if it contains secrets. For Vercel, you set this as an environment variable in the dashboard instead (see Step 5).
-
-### Step 2: Create a Vercel account
+### B1: Create a Vercel account
 
 1. Go to **vercel.com**
 2. Click **"Sign Up"**
-3. Sign in with your GitHub account
+3. Click **"Continue with GitHub"**
 
-### Step 3: Import your project
+### B2: Import your project
 
 1. Click **"Add New Project"**
-2. Click **"Import"** next to your portfolio GitHub repository
-3. Vercel will detect it as a Vite/React project automatically
+2. Find your portfolio repo → click **"Import"**
 
-### Step 4: Configure the build settings
+### B3: Configure build settings
 
-Vercel should auto-detect these, but verify:
+On the import screen, set:
 
 | Setting | Value |
 |---------|-------|
@@ -126,79 +261,95 @@ Vercel should auto-detect these, but verify:
 | Build Command | `npm run build` |
 | Output Directory | `dist` |
 
-### Step 5: Add environment variable in Vercel
+> Click **"Edit"** next to Root Directory if it shows the wrong folder.
 
-1. On the import page, expand **"Environment Variables"**
-2. Add:
+### B4: Add environment variable
+
+Still on the import screen, expand **"Environment Variables"**:
 
 | Name | Value |
 |------|-------|
 | `VITE_CONTACT_API_URL` | `https://your-app-name.railway.app/api/contact` |
 
-3. Make sure the environment is set to **Production** (and optionally Preview)
+Replace `your-app-name` with your actual Railway URL from Step A6.
+Set environment to **Production**.
 
-### Step 6: Deploy
+### B5: Deploy
 
 1. Click **"Deploy"**
-2. Wait 1–2 minutes for the build to complete
-3. Vercel gives you a public URL: `https://your-portfolio.vercel.app`
+2. Wait 1–2 minutes
+3. Your live URL: `https://your-portfolio.vercel.app`
 
 ---
 
-## Part 3 — Test Everything
+## PART C — Test Everything
 
 ### Test the frontend
-1. Open your Vercel URL in a browser
-2. Check all pages load: Home, Skills, Certificates, Contact
-3. Check the photo slideshow works on the Hero section
-4. Click portfolio cards and verify detail pages open
+1. Open your Vercel URL
+2. Check every page: Home → Skills → Certificates → Contact → Project detail pages
+3. Check photo slideshow on Hero section
+4. Click a skill icon → verify it opens the skill detail page
 
 ### Test the contact form
-1. Go to the Contact page
-2. Fill in the form and click Submit
-3. Check your Gmail inbox (`vorawut.maggy@gmail.com`) for the message
-4. If it fails, check Railway logs: service → **Logs** tab
+1. Go to `/contact` page
+2. Fill in the form and click **Submit**
+3. Check your Gmail inbox (`vorawut.maggy@gmail.com`)
+4. If it fails → check Railway: service → **Logs** tab for error messages
 
 ---
 
-## Part 4 — Auto-Deploy on Every Push (Already Included)
+## PART D — Auto-Deploy After Setup
 
-Both Vercel and Railway watch your GitHub repository.
+Once set up, both services watch your GitHub repo.
 
-Every time you run:
+Every time you update code:
 ```
 git add .
-git commit -m "your message"
+git commit -m "update description"
 git push
 ```
 
-- **Vercel** rebuilds the React frontend automatically (~1 min)
-- **Railway** restarts the Go server automatically (~30 sec)
+| Service | Auto-rebuilds in |
+|---------|-----------------|
+| Vercel | ~1 minute |
+| Railway | ~30 seconds |
 
-No manual steps needed after the initial setup.
+No manual steps after initial setup.
 
 ---
 
-## Troubleshooting
+## Troubleshooting — Vercel + Railway
 
 | Problem | Likely Cause | Fix |
 |---------|-------------|-----|
-| Contact form shows error | Go server not running or wrong URL | Check Railway logs, verify `VITE_CONTACT_API_URL` |
-| Page not found on refresh | Router config | Already handled — HashRouter is used |
-| Images not loading | ibb.co links expired or broken | Re-upload images to ibb.co and update `projects.js` / `certificates.js` |
-| Railway build fails | Wrong root directory | Set Root Directory to `server` in Railway settings |
-| Vercel build fails | Wrong root directory | Set Root Directory to `reactport-demo` in Vercel settings |
-| Email not received | Wrong App Password | Generate a new App Password from Google Account settings |
+| Contact form error | Go server not running | Check Railway Logs tab |
+| Contact form error | Wrong API URL | Verify `VITE_CONTACT_API_URL` in Vercel → Settings → Environment Variables |
+| Email not arriving | Wrong App Password | Generate a new one from Google Account |
+| Email not arriving | Gmail blocked the app | Enable "Less secure app access" or use App Password |
+| Railway build fails | Wrong root directory | Set Root Directory to `server` in Railway Settings |
+| Vercel build fails | Wrong root directory | Set Root Directory to `reactport-demo` in Vercel Settings |
+| Page not found on refresh | Routing issue | Already fixed — HashRouter handles this |
+| Images broken | ibb.co link expired | Move images to `public/images/` folder and update paths |
 
 ---
 
-## Summary Checklist
+## Case 2 Summary Checklist
 
-- [ ] Gmail App Password created
-- [ ] Go server root directory set to `server` in Railway
-- [ ] All 6 environment variables added in Railway
-- [ ] Railway domain generated and copied
-- [ ] Vercel root directory set to `reactport-demo`
-- [ ] `VITE_CONTACT_API_URL` added in Vercel environment variables
-- [ ] Vercel deployment successful
-- [ ] Contact form tested and email received
+**Railway (Backend):**
+- [ ] Gmail App Password created (16 characters)
+- [ ] Railway account created and connected to GitHub
+- [ ] Root Directory set to `server`
+- [ ] All 6 environment variables added
+- [ ] Railway domain generated and working
+
+**Vercel (Frontend):**
+- [ ] Vercel account created and connected to GitHub
+- [ ] Root Directory set to `reactport-demo`
+- [ ] `VITE_CONTACT_API_URL` environment variable added with Railway URL
+- [ ] Deploy successful
+
+**Testing:**
+- [ ] All pages load correctly on Vercel URL
+- [ ] Contact form sends email successfully
+- [ ] Project detail pages open from portfolio cards
+- [ ] Skill detail pages open from skills grid

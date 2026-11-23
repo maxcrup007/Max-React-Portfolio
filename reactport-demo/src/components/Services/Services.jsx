@@ -11,7 +11,7 @@ function Services() {
                 <FaCode />
                 <h4>Full-stack Developer</h4>
                 <p>
-                    I design and build complete web applications from database to UI, taking a feature from
+                    I have the hard skill about software development for design and build complete web applications from database to UI, taking a feature from
                     requirements to a working deployed solution.
                 </p>
                 <ul className={styles.tool_list}>
@@ -28,7 +28,7 @@ function Services() {
                 <FaShieldHalved />
                 <h4>QA Engineer</h4>
                 <p>
-                    I help teams ship with confidence by covering both functional and performance testing
+                    I have the hard skill about software testing help teams ship with confidence by covering both functional and performance testing
                     across web, API, and load scenarios.
                 </p>
                 <ul className={styles.tool_list}>
@@ -45,7 +45,7 @@ function Services() {
                 <FaDesktop />
                 <h4>Data Analyst</h4>
                 <p>
-                    I have the skill about data analysis, collects, cleans, converts and interprets raw data to help solve problems and make better decisions. 
+                    I have the hard skill about data analysis, collects, cleans, converts and interprets raw data to help solve problems and make better decisions. 
                 </p>
                 <ul className={styles.tool_list}>
                     
@@ -55,6 +55,7 @@ function Services() {
                     <li><span className={styles.tool_name}>Pandas</span><span className={styles.tool_arrow}>→</span><span className={styles.tool_desc}>Python library use for manage and conversion big data</span></li>
                     <li><span className={styles.tool_name}>Matplotlib</span><span className={styles.tool_arrow}>→</span><span className={styles.tool_desc}>Python library use for setting graph and data visualization</span></li>
                     <li><span className={styles.tool_name}>Scikit-learn</span><span className={styles.tool_arrow}>→</span><span className={styles.tool_desc}>Python library use for simple ML as prediction and Clustering data</span></li>
+                
                 </ul>
             </div>
         </div>
