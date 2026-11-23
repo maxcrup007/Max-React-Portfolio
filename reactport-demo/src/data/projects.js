@@ -113,11 +113,11 @@ const projects = [
     link: "https://github.com/maxcrup007/My-TO-DO-GO",
   },
   {
-    id: "game-guide-wiki-6",
-    title: "Game Guide Wiki",
+    id: "game-guide-planner-6",
+    title: "Game Guide Planner",
     image: "https://i.ibb.co/xKYpD1kb/Screenshot-2026-06-29-004517.png",
     description:
-      "A community-driven wiki platform for game guides, walkthroughs, and strategy content with rich media support and collaborative editing and The front-end interface of the Game Guide Wiki featuring responsive design, interactive content layouts, and optimized media rendering.",
+      "A community-driven planner platform for game guides, walkthroughs, and strategy content with rich media support and collaborative editing and The front-end interface of the Game Guide Wiki featuring responsive design, interactive content layouts, and optimized media rendering.",
     techStack: ["React", "Vite", "JavaScript", "Python", "Flask API", "CSS3", "Figma"],
     workflow: [
       "Responsive layout for all devices",
