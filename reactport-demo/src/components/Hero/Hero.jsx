@@ -4,10 +4,11 @@ import { FaGithub, FaDiscord, FaFacebookF, FaDownload, FaArrowUpRightFromSquare 
 import { TypeAnimation } from 'react-type-animation';
 import Tilt from 'react-parallax-tilt';
 
+const BASE = import.meta.env.BASE_URL
 const photos = [
-  'https://i.ibb.co/HQsqyh4/28166263-1182525198550745-2459796525163076801-n.jpg',
-  'https://i.ibb.co/ZpSj9NjM/IMG-4118.jpg',
-  'https://i.ibb.co/211MG058/48976849-2133676196883682-7944768605072130048-n.jpg',
+  `${BASE}picture/photo1.jpg`,
+  `${BASE}picture/photo2.jpg`,
+  `${BASE}picture/photo3.jpg`,
 ];
 
 function Hero() {
@@ -95,7 +96,7 @@ function Hero() {
         {/* Card 5: Download CV CTA */}
         <div className={`${styles.card} ${styles.card_cta}`}>
           <p className={styles.cta_question}>View my resume</p>
-          <a className={styles.cta_link} href="/Max_Resume.pdf" download>
+          <a className={styles.cta_link} href={`${import.meta.env.BASE_URL}Max_Resume.pdf`} download="Max_Resume.pdf">
             Download CV <FaDownload />
           </a>
         </div>

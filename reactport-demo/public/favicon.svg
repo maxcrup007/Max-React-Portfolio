@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Orange rounded background -->
+  <rect width="32" height="32" rx="7" fill="#ff6a00"/>
+  <!-- Briefcase body -->
+  <rect x="5" y="14" width="22" height="13" rx="2.5" fill="white"/>
+  <!-- Briefcase handle -->
+  <path d="M11 14v-3.5a2.5 2.5 0 0 1 2.5-2.5h5a2.5 2.5 0 0 1 2.5 2.5V14" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Middle clasp -->
+  <rect x="13.5" y="18" width="5" height="4" rx="1" fill="#ff6a00"/>
+  <!-- Horizontal divider line -->
+  <line x1="5" y1="20" x2="13.5" y2="20" stroke="#ff6a00" stroke-width="1.5"/>
+  <line x1="18.5" y1="20" x2="27" y2="20" stroke="#ff6a00" stroke-width="1.5"/>
+</svg>

@@ -24,7 +24,7 @@ function Navbar() {
               <li><Link to="/contact">Contact</Link></li>
             </ul>
             <div className={styles.button}>
-              <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>
+              <a href={`${import.meta.env.BASE_URL}Max_Resume.pdf`} download="Max_Resume.pdf">Download CV <FaDownload /></a>
             </div>
           </div>
 
@@ -38,7 +38,7 @@ function Navbar() {
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
               <div className={styles.mobile_button}>
-                <a href="/Max_Resume.pdf" download>Download CV <FaDownload /></a>
+                <a href={`${import.meta.env.BASE_URL}Max_Resume.pdf`} download="Max_Resume.pdf">Download CV <FaDownload /></a>
               </div>
             </>
           ) : null}
